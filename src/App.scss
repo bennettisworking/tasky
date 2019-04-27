@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo:400,700|Neucha');
+
+body{
+  background-color: #ddd;
+}
+
+.app {
+  text-align: center;
+  font-family: 'Archivo', sans-serif;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.text-input{
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid grey;
+  font-size: 14px;
+}
+
+.btn{
+  border: 1px solid grey;
+}
+
+.header {
+  height: 60px;
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  text-align: left;
+  background-color: aqua;
+}
+
+.header__title{
+  font-weight: bold;
+  font-size: 36px;
+  margin-top: -6px;
+}
+
+.header__input{
+  width: 500px;
+  margin: 0 auto;
+}
+
+.header__button{
+  background-color: turquoise;
+  margin-left: 5px;
+  color: white;
+}
+
+.main{
+  max-width: 1300px;
+  margin: 20px auto 0;
+}
+
+.task-card{
+  width: 100%;
+  height: 200px;
+  background-image: url(./card_bg.png);
+  background-size: contain;
+  position: relative;
+  font-family: 'Neucha', sans-serif;
+  text-align: left;
+  padding: 33px 10px 10px;
+  margin: 0 0 15px;
+  line-height: 16.5px;
+  font-size: 15px;
+}
+
+.task-card__delete{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

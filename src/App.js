@@ -1,26 +1,118 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './App.scss';
+//import card_bg from './card_bg.png';
 
-function App() {
+class App extends Component {
+    constructor(props) {
+    super(props);
+    this.state = {
+      taskList: []
+    };
+    this.addItem = this.addItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
+    }
+  addItem(e) {
+    if (this._inputElement.value !== '') {
+    let newTask = {
+      message: this._inputElement.value,
+      key: Date.now()
+    };
+    
+    this.setState((prevState) => {
+      return { 
+        taskList: prevState.taskList.concat(newTask) 
+      };
+    }, () => {
+      console.log(this.state.taskList);   
+    });
+    this._inputElement.value = '';
+    }
+     
+  }
+removeItem(a){
+    console.log('meowww');
+    console.log(a);
+    console.log(this.state);
+    let templist = this.state.taskList.filter((item, index)=>{
+
+    return item.key !== a;
+  });
+    console.log(templist);
+    this.setState({
+        taskList: templist
+    });
+  }
+
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header className="header row mr-0 ml-0">
+      <div className="col-lg-3">
+        <div className = "header__title"><i className="fas fa-clipboard-check"></i> TASKY</div>
+      </div>
+      <div className="col-lg-6 text-center">
+        <input className = "header__input text-input" ref = {(a) => this._inputElement = a} placeholder = "Enter a new task"/>
+        <Button className="header__button btn" onClick={this.addItem}>Add</Button>
+      </div>
       </header>
+      <section className="main">
+      <TodoItems tasks={this.state.taskList} delete={this.removeItem}/>
+      </section>
     </div>
   );
+}
+}
+
+
+class TodoItems extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.createTasks = this.createTasks.bind(this);
+  }
+  createTasks(task) {
+    return <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+    <div class="task-card">{task.message}
+    <i class="fas fa-trash-alt task-card__delete" onClick={()=>{this.delete(task.key)}}></i>
+    </div>
+    </div>
+  }
+    delete(key) {
+    this.props.delete(key);
+  }
+  render() {
+    let todoEntries = this.props.tasks;
+    let listItems = todoEntries.map(this.createTasks);
+ 
+    return (
+      <div className="row main">
+          {listItems}
+      </div>
+    );
+  }
+};
+
+
+function View(){
+  return{
+
+  }
+}
+
+function Button(props){
+    const {
+      className,
+      children, 
+      onClick
+    } = props;
+    return (
+      <button
+      className={className}
+      onClick={onClick}
+      >
+    {children}
+    </button>
+    )
 }
 
 export default App;
