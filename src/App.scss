@@ -27,6 +27,9 @@ body{
   border: none;
   border-radius: 5px;
 }
+.btn:hover{
+  filter: brightness(108%);
+}
 
 .header {
   height: 60px;
@@ -78,6 +81,21 @@ body{
   bottom: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+.task-card__complete{
+  background-color: #e5536a;
+  color: #ffffff;
+}
+
+.task-card__status{
+ position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.task-card__status-text{
+  font-size: 12px;
 }
 
 .App-link {
