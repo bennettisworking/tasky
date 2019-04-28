@@ -64,9 +64,9 @@ class App extends Component {
               ref={a => (this._inputElement = a)}
               placeholder="Enter a new task"
             />
-            <Button className="header__button btn" onClick={this.addItem}>
+            <button className="header__button btn" onClick={this.addItem}>
               Add
-            </Button>
+            </button>
           </div>
         </header>
         <section className="main">
@@ -89,11 +89,11 @@ class TodoItems extends Component {
       
       status = <div className="task-card__status-text task-card__status">Task completed in <br/><TimePassed diff={diff}/></div>;
     } else {
-      status = <Button className="btn btn-sm task-card__complete task-card__status"
+      status = <button className="btn btn-sm task-card__complete task-card__status"
       onClick={()=>{
         this.markComplete(task.key);
         }}
-      >I did this!</Button>;
+      >I did this!</button>;
     }
     return (
       <div className="col-lg-3 col-md-4 col-sm-6 col-12" key={task.key}>
@@ -140,15 +140,6 @@ function TimePassed(props){
   if(minutes){timeString+=minutes + " minutes and "}  
   timeString+=seconds + " seconds";
   return timeString;
-}
-
-function Button(props) {
-  const { className, children, onClick } = props;
-  return (
-    <button className={className} onClick={onClick}>
-      {children}
-    </button>
-  );
 }
 
 export default App;
