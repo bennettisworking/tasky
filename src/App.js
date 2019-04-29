@@ -15,11 +15,10 @@ class App extends Component {
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.markComplete = this.markComplete.bind(this);
-    console.log(savedList);
   }
   addItem(e) {
     if (this._inputElement.value !== "") {
-      const r = Math.round(Math.random() * 4);
+      const rand = Math.round(Math.random() * 4);
       const colorArray = [
         "#add5ae",
         "#f1e9b0",
@@ -29,11 +28,10 @@ class App extends Component {
       ];
       const newTask = {
         message: this._inputElement.value,
-        color: colorArray[r],
+        color: colorArray[rand],
         completed: null,
         key: Date.now()
       };
-
       this.setState(prevState => {
         const list = prevState.taskList.concat(newTask);
         cookies.set("taskList", list);
@@ -41,12 +39,11 @@ class App extends Component {
           taskList: list
         };
       });
-      const cookieList = savedList.concat(newTask);
       this._inputElement.value = "";
     }
   }
   removeItem(a) {
-    let templist = this.state.taskList.filter(item => item.key !== a);
+    const templist = this.state.taskList.filter(item => item.key !== a);
     //console.log(templist);
     cookies.set("taskList", templist);
     this.setState({
@@ -68,12 +65,12 @@ class App extends Component {
     return (
       <div className="app">
         <header className="header row mr-0 ml-0">
-          <div className="col-lg-3 col-md-3">
+          <div className="col-lg-3 col-md-3 col-sm-12">
             <div className="header__title">
-              <i className="fas fa-clipboard-check" /> TASKY
+              <i className="fas fa-clipboard-check" />TASKY
             </div>
           </div>
-          <div className="col-lg-6 col-md-9 text-center">
+          <div className="col-lg-6 col-md-9 col-sm-12 text-center">
             <input
               className="header__input text-input"
               ref={a => (this._inputElement = a)}
