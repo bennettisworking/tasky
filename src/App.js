@@ -68,12 +68,12 @@ class App extends Component {
     return (
       <div className="app">
         <header className="header row mr-0 ml-0">
-          <div className="col-lg-3">
+          <div className="col-lg-3 col-md-3">
             <div className="header__title">
               <i className="fas fa-clipboard-check" /> TASKY
             </div>
           </div>
-          <div className="col-lg-6 text-center">
+          <div className="col-lg-6 col-md-9 text-center">
             <input
               className="header__input text-input"
               ref={a => (this._inputElement = a)}
