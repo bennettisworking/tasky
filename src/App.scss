@@ -1,23 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Viga:400,700');
 
+$main-background: #dddddd;
+$main-font: 'Viga', sans-serif;
+$header-background: #00d5d5;
+$header-text: #ffffff;
+
+$header-button: turquoise;
+$complete-button: #e5536a;
+
+$border-radius: 5px;
+
 body{
-  background-color: #ddd;
+  background-color: $main-background;
 }
 
 .app {
   text-align: center;
-  font-family: 'Viga', sans-serif;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+  font-family: $main-font;
 }
 
 .text-input{
   padding: 8px;
-  border-radius: 5px;
+  border-radius: $border-radius;
   box-shadow: none;
   border: none;
   font-size: 14px;
@@ -25,7 +29,8 @@ body{
 
 .btn{
   border: none;
-  border-radius: 5px;
+  border-radius: $border-radius;
+
 }
 .btn:hover{
   filter: brightness(108%);
@@ -35,9 +40,9 @@ body{
   height: 60px;
   width: 100%;
   padding: 10px;
-  color: #fff;
+  color: $header-text;
   text-align: left;
-  background-color: #00d5d5;
+  background-color: $header-background;
 }
 
 .header__title{
@@ -52,9 +57,10 @@ body{
 }
 
 .header__button{
-  background-color: turquoise;
+  background-color: $header-button;
   margin-left: 5px;
   color: white;
+  height: 37px;
 }
 
 .main{
@@ -84,7 +90,7 @@ body{
 }
 
 .task-card__complete{
-  background-color: #e5536a;
+  background-color: $complete-button;
   color: #ffffff;
 }
 
@@ -103,11 +109,3 @@ body{
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

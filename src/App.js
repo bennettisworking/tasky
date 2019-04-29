@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 import TaskView from "./TaskView";
 import "./App.scss";
 
 const cookies = new Cookies();
-const savedList = cookies.get('taskList') || [];
-
+const savedList = cookies.get("taskList") || [];
 
 class App extends Component {
   constructor(props) {
@@ -20,8 +19,14 @@ class App extends Component {
   }
   addItem(e) {
     if (this._inputElement.value !== "") {
-      const r = Math.round(Math.random()*4);
-      const colorArray = ['#add5ae', '#f1e9b0', '#7ccae3', '#ddadd1', '#f5a1ad'];
+      const r = Math.round(Math.random() * 4);
+      const colorArray = [
+        "#add5ae",
+        "#f1e9b0",
+        "#7ccae3",
+        "#ddadd1",
+        "#f5a1ad"
+      ];
       const newTask = {
         message: this._inputElement.value,
         color: colorArray[r],
@@ -29,33 +34,31 @@ class App extends Component {
         key: Date.now()
       };
 
-      this.setState(
-        prevState => {
-          const list = prevState.taskList.concat(newTask);
-          cookies.set('taskList', list);
-          return {
-            taskList: list
-          };
-        }
-      );
+      this.setState(prevState => {
+        const list = prevState.taskList.concat(newTask);
+        cookies.set("taskList", list);
+        return {
+          taskList: list
+        };
+      });
       const cookieList = savedList.concat(newTask);
       this._inputElement.value = "";
     }
   }
   removeItem(a) {
-    let templist = this.state.taskList.filter(item  => item.key !== a);
+    let templist = this.state.taskList.filter(item => item.key !== a);
     //console.log(templist);
-    cookies.set('taskList', templist);
+    cookies.set("taskList", templist);
     this.setState({
       taskList: templist
     });
   }
-  markComplete(a){
+  markComplete(a) {
     const templist = [...this.state.taskList];
     const ind = this.state.taskList.findIndex(item => item.key === a);
     templist[ind].completed = Date.now();
     //console.log(templist);
-    cookies.set('taskList', templist);
+    cookies.set("taskList", templist);
     this.setState({
       taskList: templist
     });
@@ -82,13 +85,15 @@ class App extends Component {
           </div>
         </header>
         <section className="main">
-          <TaskView tasks={this.state.taskList} delete={this.removeItem} complete={this.markComplete}/>
+          <TaskView
+            tasks={this.state.taskList}
+            delete={this.removeItem}
+            complete={this.markComplete}
+          />
         </section>
       </div>
     );
   }
 }
-
-
 
 export default App;
