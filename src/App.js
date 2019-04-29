@@ -16,7 +16,7 @@ class App extends Component {
     this.removeItem = this.removeItem.bind(this);
     this.markComplete = this.markComplete.bind(this);
   }
-  addItem(e) {
+  addItem() {
     if (this._inputElement.value !== "") {
       const rand = Math.round(Math.random() * 4);
       const colorArray = [
@@ -42,17 +42,17 @@ class App extends Component {
       this._inputElement.value = "";
     }
   }
-  removeItem(a) {
-    const templist = this.state.taskList.filter(item => item.key !== a);
+  removeItem(key) {
+    const templist = this.state.taskList.filter(item => item.key !== key);
     //console.log(templist);
     cookies.set("taskList", templist);
     this.setState({
       taskList: templist
     });
   }
-  markComplete(a) {
+  markComplete(key) {
     const templist = [...this.state.taskList];
-    const ind = this.state.taskList.findIndex(item => item.key === a);
+    const ind = this.state.taskList.findIndex(item => item.key === key);
     templist[ind].completed = Date.now();
     //console.log(templist);
     cookies.set("taskList", templist);

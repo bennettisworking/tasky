@@ -8,7 +8,7 @@ class TaskView extends Component {
   createTasks(task) {
     let status = "";
     if (task.completed !== null) {
-      let diff = task.completed - task.key;
+      const diff = task.completed - task.key;
 
       status = (
         <div className="task-card__status-text task-card__status">
@@ -50,8 +50,8 @@ class TaskView extends Component {
     this.props.complete(key);
   }
   render() {
-    let todoEntries = this.props.tasks;
-    let listItems = todoEntries.map(this.createTasks);
+    const todoEntries = this.props.tasks;
+    const listItems = todoEntries.map(this.createTasks);
 
     return <div className="row main">{listItems}</div>;
   }
